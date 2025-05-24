@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SenaiAPI.DTos;
-using SenaiAPI.Entidades;
+using SenaiAPI.Servicos;
 using SenaiAPI.Servicos.Interface;
 
 namespace SenaiAPI.Controllers
 {
     [ApiController]
     [Route("[controller]/api/v1")]
-    public class EscolaController : ControllerBase
+    public class EnderecoController : ControllerBase
     {
-        private readonly IEscolaService _escolaService;
+        private readonly IEnderecoService _enderecoService;
 
-        public EscolaController(IEscolaService escolaService) 
+        public EnderecoController(IEnderecoService enderecoService)
         {
-            _escolaService = escolaService;  
+            _enderecoService = enderecoService;
         }
 
         [HttpGet]
@@ -23,37 +23,37 @@ namespace SenaiAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Adicionar(EscolaDTo escola)
+        public IActionResult Adicionar(EnderecoDTo endereco)
         {
-            _escolaService.Salvar(escola);
+            _enderecoService.Salvar(endereco);
             return Ok();
         }
 
         [HttpGet("buscar-todos")]
         public IActionResult Buscar()
         {
-            var escolas = _escolaService.BuscarTodos();
-            return Ok(escolas);
+            var enderecos = _enderecoService.BuscarTodos();
+            return Ok(enderecos);
         }
 
         [HttpDelete]
         public async Task<IActionResult> Remover(long id)
         {
-            await _escolaService.Remover(id);
+            await _enderecoService.Remover(id);
             return Ok();
         }
 
         [HttpPost]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] EscolaEdicaoDTo escola) 
+        public IActionResult Editar([FromBody] EnderecoEdicaoDTo endereco)
         {
-            if (escola == null) 
+            if (endereco == null)
             {
                 return BadRequest("Escola não pode ser nula");
             }
-            _escolaService.Editar(escola);
+            _enderecoService.Editar(endereco);
             return Ok();
         }
-        
     }
+       
 }

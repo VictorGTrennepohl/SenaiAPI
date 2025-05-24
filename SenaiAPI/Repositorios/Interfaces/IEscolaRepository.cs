@@ -7,6 +7,10 @@ namespace SenaiAPI.Repositorios.Interfaces
     {
         public List<Escola> PegarTodos();
         void Salvar(Escola escola);
+
+        Task Remover(long Id);
+
+        Escola ObterPorId(long Id);
        
     }
 }

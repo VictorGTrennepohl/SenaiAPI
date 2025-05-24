@@ -8,6 +8,11 @@ namespace SenaiAPI.Servicos.Interface
         void Salvar(EscolaDTo escola);
         List<EscolaDTo> BuscarTodos();
 
+        Task Remover(long id);
+
+        public void Editar(EscolaEdicaoDTo model);
+
+
 
     }
 }

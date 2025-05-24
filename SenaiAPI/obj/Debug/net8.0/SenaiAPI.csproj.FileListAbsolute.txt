@@ -113,3 +113,4 @@ C:\Users\victor_trennepohl\Desktop\Aulas do trainee\API 2025\SenaiAPI\SenaiAPI\b
 C:\Users\victor_trennepohl\Desktop\Aulas do trainee\API 2025\SenaiAPI\SenaiAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\victor_trennepohl\Desktop\Aulas do trainee\API 2025\SenaiAPI\SenaiAPI\obj\Debug\net8.0\SenaiAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\victor_trennepohl\Desktop\Aulas do trainee\API 2025\SenaiAPI\SenaiAPI\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\victor_trennepohl\Desktop\Aulas do trainee\API 2025\SenaiAPI\SenaiAPI\obj\Debug\net8.0\SenaiAPI.sourcelink.json

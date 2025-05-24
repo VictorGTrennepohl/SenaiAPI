@@ -1,5 +1,73 @@
 [
   {
+    "ContainingType": "SenaiAPI.Controllers.EnderecoController",
+    "Method": "Index",
+    "RelativePath": "Endereco/api/v1",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SenaiAPI.Controllers.EnderecoController",
+    "Method": "Adicionar",
+    "RelativePath": "Endereco/api/v1",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "endereco",
+        "Type": "SenaiAPI.DTos.EnderecoDTo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SenaiAPI.Controllers.EnderecoController",
+    "Method": "Remover",
+    "RelativePath": "Endereco/api/v1",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SenaiAPI.Controllers.EnderecoController",
+    "Method": "Buscar",
+    "RelativePath": "Endereco/api/v1/buscar-todos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SenaiAPI.Controllers.EnderecoController",
+    "Method": "Editar",
+    "RelativePath": "Endereco/api/v1/Editar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "endereco",
+        "Type": "SenaiAPI.DTos.EnderecoEdicaoDTo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SenaiAPI.Controllers.EscolaController",
     "Method": "Index",
     "RelativePath": "Escola/api/v1",
@@ -27,12 +95,44 @@
   },
   {
     "ContainingType": "SenaiAPI.Controllers.EscolaController",
+    "Method": "Remover",
+    "RelativePath": "Escola/api/v1",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SenaiAPI.Controllers.EscolaController",
     "Method": "Buscar",
     "RelativePath": "Escola/api/v1/buscar-todos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SenaiAPI.Controllers.EscolaController",
+    "Method": "Editar",
+    "RelativePath": "Escola/api/v1/Editar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "escola",
+        "Type": "SenaiAPI.DTos.EscolaEdicaoDTo",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
