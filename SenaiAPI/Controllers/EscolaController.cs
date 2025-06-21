@@ -23,8 +23,12 @@ namespace SenaiAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Adicionar(EscolaDTo escola)
+        public IActionResult Adicionar([FromBody]EscolaDTo escola)
         {
+            if (escola == null) 
+            {
+                return BadRequest("Escola não pode ser nula");
+            }
             _escolaService.Salvar(escola);
             return Ok();
         }
@@ -54,6 +58,14 @@ namespace SenaiAPI.Controllers
             _escolaService.Editar(escola);
             return Ok();
         }
-        
+        [HttpGet]
+        [Route("PegarPorId")]
+        public IActionResult PegarPorId(long id)
+        {
+            var escolas = _escolaService.ObterPorId(id);
+            return Ok(escolas);
+        }
+
+
     }
 }

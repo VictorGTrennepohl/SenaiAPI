@@ -13,6 +13,8 @@ namespace SenaiAPI.Mappers
 
             CreateMap<EscolaDTo, Escola>().ReverseMap();
 
+            CreateMap<EnderecoDTo, Endereco>().ReverseMap();
+
             //.ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome));
             //CreateMap<Escola, EscolaDto>();
         }

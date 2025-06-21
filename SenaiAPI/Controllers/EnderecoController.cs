@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SenaiAPI.DTos;
-using SenaiAPI.Servicos;
 using SenaiAPI.Servicos.Interface;
 
 namespace SenaiAPI.Controllers
@@ -14,12 +13,6 @@ namespace SenaiAPI.Controllers
         public EnderecoController(IEnderecoService enderecoService)
         {
             _enderecoService = enderecoService;
-        }
-
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return Ok();
         }
 
         [HttpPost]
@@ -49,7 +42,7 @@ namespace SenaiAPI.Controllers
         {
             if (endereco == null)
             {
-                return BadRequest("Escola não pode ser nula");
+                return BadRequest("Endereço não pode ser nula");
             }
             _enderecoService.Editar(endereco);
             return Ok();

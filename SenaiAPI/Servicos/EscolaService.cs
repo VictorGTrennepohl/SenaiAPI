@@ -40,5 +40,11 @@ namespace SenaiAPI.Servicos
             _mapper.Map(model, escola);
             _escolaRepository.Salvar(escola);
         }
+
+        public EscolaDTo ObterPorId(long id)
+        {
+            var escola = _escolaRepository.ObterPorId(id);
+            return _mapper.Map<EscolaDTo>(escola);
+        }
     }
 }

@@ -6,16 +6,6 @@
   },
   "paths": {
     "/Endereco/api/v1": {
-      "get": {
-        "tags": [
-          "Endereco"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
       "post": {
         "tags": [
           "Endereco"
@@ -213,6 +203,122 @@
         }
       }
     },
+    "/Escola/api/v1/PegarPorId": {
+      "get": {
+        "tags": [
+          "Escola"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Professor/api/v1": {
+      "post": {
+        "tags": [
+          "Professor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessorDTo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessorDTo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessorDTo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Professor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Professor/api/v1/buscar-todos": {
+      "get": {
+        "tags": [
+          "Professor"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Professor/api/v1/Editar": {
+      "post": {
+        "tags": [
+          "Professor"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessorEdicaoDTo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessorEdicaoDTo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfessorEdicaoDTo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -254,6 +360,117 @@
   },
   "components": {
     "schemas": {
+      "Aluno": {
+        "required": [
+          "cpf",
+          "nascimento",
+          "nome"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nome": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "nascimento": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cpf": {
+            "maxLength": 14,
+            "minLength": 1,
+            "type": "string"
+          },
+          "classeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "classe": {
+            "$ref": "#/components/schemas/Classe"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Classe": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "serie": {
+            "$ref": "#/components/schemas/SerieEnum"
+          },
+          "alunos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Aluno"
+            },
+            "nullable": true
+          },
+          "escolaId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "escola": {
+            "$ref": "#/components/schemas/Escola"
+          },
+          "professorId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "professor": {
+            "$ref": "#/components/schemas/Professor"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Endereco": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "rua": {
+            "maxLength": 80,
+            "type": "string",
+            "nullable": true
+          },
+          "bairro": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "cidade": {
+            "maxLength": 60,
+            "type": "integer",
+            "format": "int32"
+          },
+          "estado": {
+            "maxLength": 2,
+            "type": "string",
+            "nullable": true
+          },
+          "numero": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "escolaId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "escola": {
+            "$ref": "#/components/schemas/Escola"
+          }
+        },
+        "additionalProperties": false
+      },
       "EnderecoDTo": {
         "type": "object",
         "properties": {
@@ -334,12 +551,54 @@
         },
         "additionalProperties": false
       },
+      "Escola": {
+        "required": [
+          "nome"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nome": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "endereco": {
+            "$ref": "#/components/schemas/Endereco"
+          },
+          "professores": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Professor"
+            },
+            "nullable": true
+          },
+          "classes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Classe"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "EscolaDTo": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
           "nome": {
             "type": "string",
             "nullable": true
+          },
+          "endereco": {
+            "$ref": "#/components/schemas/EnderecoDTo"
           }
         },
         "additionalProperties": false
@@ -357,6 +616,97 @@
           }
         },
         "additionalProperties": false
+      },
+      "Professor": {
+        "required": [
+          "nome"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nome": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "classe": {
+            "$ref": "#/components/schemas/Classe"
+          },
+          "escolaId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "escola": {
+            "$ref": "#/components/schemas/Escola"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessorDTo": {
+        "required": [
+          "nome"
+        ],
+        "type": "object",
+        "properties": {
+          "nome": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "classe": {
+            "$ref": "#/components/schemas/Classe"
+          },
+          "escolaId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "escola": {
+            "$ref": "#/components/schemas/Escola"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProfessorEdicaoDTo": {
+        "required": [
+          "nome"
+        ],
+        "type": "object",
+        "properties": {
+          "nome": {
+            "maxLength": 60,
+            "minLength": 1,
+            "type": "string"
+          },
+          "classe": {
+            "$ref": "#/components/schemas/Classe"
+          },
+          "escolaId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "escola": {
+            "$ref": "#/components/schemas/Escola"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SerieEnum": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "format": "int32"
       },
       "WeatherForecast": {
         "type": "object",

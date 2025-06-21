@@ -12,6 +12,8 @@ namespace SenaiAPI.Servicos.Interface
 
         public void Editar(EscolaEdicaoDTo model);
 
+        EscolaDTo ObterPorId(long id);
+
 
 
     }
