@@ -489,9 +489,8 @@
             "nullable": true
           },
           "cidade": {
-            "maxLength": 60,
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int32"
           },
           "estado": {
             "maxLength": 2,
